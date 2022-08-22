@@ -22,10 +22,17 @@
   </div>
 </template>
 <script setup name="List">
+import {useStore} from "vuex"
+import i18n from "../language/index"
+console.log(i18n.global.locale.value)
+const store = useStore()
 function changeLan(){
-  console.log(localStorage.getItem('locale'))
-  let lan = localStorage.getItem('locale') === 'zh' ? 'en' : 'zh'
-  localStorage.setItem('locale',lan)
+  let lan = store.state.locale === 'zh' ? 'en' : 'zh'
+  store.commit('set_locale',lan)
+  i18n.global.locale.value = lan
+  console.log(store.state.locale)
+  // localStorage.setItem('locale',lan)
+
 }
 </script>
 <style scoped>
