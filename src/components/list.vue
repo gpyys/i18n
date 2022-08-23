@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" v-bind:class="{on:store.state.locale === 'zh'}">
     <button @click="changeLan">{{$t('btnText')}}</button>
     <div class="item">
       <div class="item_l">
@@ -24,21 +24,21 @@
 <script setup name="List">
 import {useStore} from "vuex"
 import i18n from "../language/index"
-console.log(i18n.global.locale.value)
 const store = useStore()
 function changeLan(){
   let lan = store.state.locale === 'zh' ? 'en' : 'zh'
   store.commit('set_locale',lan)
   i18n.global.locale.value = lan
-  console.log(store.state.locale)
-  // localStorage.setItem('locale',lan)
-
 }
 </script>
 <style scoped>
+.box.on{
+  
+  border:1px solid red;
+}
 .box{
   padding: 30px;
-  border:1px solid red;
+  border:1px solid blue;
 }
 .item{
   display: flex;

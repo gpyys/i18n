@@ -5,5 +5,5 @@ import i18n from "./language";
 import { store } from './store/index';
 
 const app = createApp(App)
-// app.config.globalProperties.$locale = 'zh'
+app.config.globalProperties.$i18n = i18n
 app.use(store).use(i18n).mount('#app')
