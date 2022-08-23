@@ -22,13 +22,17 @@
   </div>
 </template>
 <script setup name="List">
+// import {getCurrentInstance } from "vue"
 import {useStore} from "vuex"
 import i18n from "../language/index"
+
+// let {proxy} = getCurrentInstance()
 const store = useStore()
 function changeLan(){
   let lan = store.state.locale === 'zh' ? 'en' : 'zh'
   store.commit('set_locale',lan)
   i18n.global.locale.value = lan
+  // proxy.$i18n.locale = lan
 }
 </script>
 <style scoped>
